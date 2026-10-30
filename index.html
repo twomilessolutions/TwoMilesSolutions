@@ -1,17 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two Miles Solutions</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Miles Solutions — Under Construction</title>
+<meta name="description" content="Two Miles Solutions is paving the way. Our new site is under construction — check back soon.">
+
+<!-- Favicons (circle mark cropped from the brand logo) -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --asphalt-1: #17181a;
+    --asphalt-2: #0f1011;
+    --line-gray: #4a4b4d;
+    --amber: #f5a623;
+    --amber-dim: #c9861a;
+    --white: #f4f2ec;
+    --white-dim: rgba(244,242,236,0.62);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    padding:0;
+    height:100%;
+    background: var(--asphalt-2);
+  }
+
+  body{
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+    text-align: center;
+    padding: 32px 24px;
+
+    background-image:
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245,166,35,0.10), transparent 60%),
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 3px),
+      linear-gradient(180deg, var(--asphalt-1) 0%, var(--asphalt-2) 100%);
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .headlight{ animation: travel 7s linear infinite; }
+    .glow-pulse{ animation: pulse 3.2s ease-in-out infinite; }
+    .fade-up{ animation: fadeUp 0.9s cubic-bezier(.2,.8,.2,1) both; }
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(14px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  @keyframes pulse{
+    0%, 100%{ opacity: .55; }
+    50%{ opacity: 1; }
+  }
+
+  /* --- Logo --- */
+  .logo-wrap{
+    margin-bottom: 44px;
+  }
+  .logo-wrap img{
+    width: min(360px, 62vw);
+    height: auto;
+    display:block;
+  }
+
+  /* --- Eyebrow --- */
+  .eyebrow{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--amber);
+    margin: 0 0 18px;
+  }
+  .eyebrow::before{
+    content: "";
+    display:inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    margin-right: 10px;
+    vertical-align: middle;
+    box-shadow: 0 0 10px 2px rgba(245,166,35,0.7);
+  }
+
+  /* --- Headline --- */
+  h1{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(2rem, 6.4vw, 3.6rem);
+    line-height: 1.08;
+    margin: 0 0 20px;
+    color: var(--white);
+  }
+  h1 span{
+    color: var(--amber);
+  }
+
+  p.lede{
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    line-height: 1.65;
+    color: var(--white-dim);
+    max-width: 520px;
+    margin: 0 auto 52px;
+    font-weight: 400;
+  }
+
+  /* --- Road signature element --- */
+  .road{
+    width: min(640px, 100%);
+    margin: 0 auto 48px;
+  }
+  .road svg{
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+  .road-track{
+    fill: none;
+    stroke: var(--line-gray);
+    stroke-width: 14;
+    stroke-linecap: round;
+  }
+  .road-edge{
+    fill: none;
+    stroke: rgba(245,166,35,0.28);
+    stroke-width: 14.5;
+    stroke-linecap: round;
+  }
+  .road-dash{
+    fill: none;
+    stroke: var(--amber);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 10 14;
+    opacity: 0.9;
+  }
+  .headlight{
+    offset-path: path("M4,54 C 90,54 120,10 220,10 C 320,10 350,54 440,54 C 500,54 520,30 596,30");
+    offset-rotate: 0deg;
+  }
+
+  @keyframes travel{
+    0%{ offset-distance: 0%; }
+    100%{ offset-distance: 100%; }
+  }
+
+  /* --- Contact --- */
+  .contact{
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+  .contact a{
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245,166,35,0.4);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .contact a:hover,
+  .contact a:focus-visible{
+    color: var(--white);
+    border-color: var(--white);
+  }
+  .contact a:focus-visible{
+    outline: 2px solid var(--amber);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  footer{
+    margin-top: 56px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(244,242,236,0.32);
+    font-family: 'Inter', sans-serif;
+  }
+
+  @media (max-width: 480px){
+    .logo-wrap{ margin-bottom: 32px; }
+    p.lede{ margin-bottom: 40px; }
+    .road{ margin-bottom: 36px; }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Two Miles Solutions</h1>
-  </header>
-  <main>
-    <p>Coming soon.</p>
-  </main>
+
+  <div class="logo-wrap fade-up">
+    <img src="logo-full.png" alt="Two Miles Solutions">
+  </div>
+
+  <p class="eyebrow fade-up" style="animation-delay:.05s">Under Construction</p>
+
+  <h1 class="fade-up" style="animation-delay:.1s">We're paving<br>the <span>way forward.</span></h1>
+
+  <p class="lede fade-up" style="animation-delay:.18s">
+    Our new site is being built. Two Miles Solutions will be live soon —
+    thanks for your patience while we finish the road ahead.
+  </p>
+
+  <footer>&copy; <span id="year"></span> Two Miles Solutions. All rights reserved.</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
